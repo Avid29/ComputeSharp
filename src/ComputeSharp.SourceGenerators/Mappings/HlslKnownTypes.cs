@@ -48,7 +48,9 @@ partial class HlslKnownTypes
     {
         return typeName switch
         {
+            "ComputeSharp.AppendBuffer`1" or
             "ComputeSharp.ConstantBuffer`1" or
+            "ComputeSharp.ConsumeBuffer`1" or
             "ComputeSharp.ReadOnlyBuffer`1" or
             "ComputeSharp.ReadWriteBuffer`1" => true,
             _ => false
@@ -113,6 +115,7 @@ partial class HlslKnownTypes
     {
         return typeName switch
         {
+            "ComputeSharp.AppendBuffer`1" or
             "ComputeSharp.ConstantBuffer`1" or
             "ComputeSharp.ReadOnlyBuffer`1" or
             "ComputeSharp.ReadWriteBuffer`1" or
@@ -167,7 +170,9 @@ partial class HlslKnownTypes
             // Construct the HLSL type name
             return typeName switch
             {
+                "ComputeSharp.AppendBuffer`1" => $"AppendStructuredBuffer<{mappedElementType}>",
                 "ComputeSharp.ConstantBuffer`1" => mappedElementType,
+                "ComputeSharp.ConsumeBuffer`1" => $"ConsumeStructuredBuffer<{mappedElementType}>",
                 "ComputeSharp.ReadOnlyBuffer`1" => $"StructuredBuffer<{mappedElementType}>",
                 "ComputeSharp.ReadWriteBuffer`1" => $"RWStructuredBuffer<{mappedElementType}>",
                 "ComputeSharp.ReadOnlyTexture1D`1" => $"Texture1D<{mappedElementType}>",
